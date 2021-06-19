@@ -1,17 +1,33 @@
+<nav class="tag-group" >
 
-<div *ngFor="let article of articles">
-    <h1>TITULO: {{article.title}} TAGS: {{article.tagList}} </h1>
-    <h2>DESCRIPCION: {{article.description}}</h2>
-        <h3>FECHA CREACION: {{article.createdAt}}</h3>
-    <p>CUERPO: {{article.body}}</p>
-</div>
-
-<button (click)="loadTags()">Cargar Tags</button>
-
-<div *ngFor="let tag of tags">
-    <a href="#"
-    (click)="loadArticlesByTag(tag)" >
+    <a 
+    *ngFor="let tag of tags"
+    href="#"
+    (click)="loadArticlesByTag(tag)" 
+    class="my-button"
+    >
         {{tag}}
     </a>
-</div>
+</nav>
 
+
+<div *ngFor="let article of articles"
+    class="articles"
+>
+    <h1 class="title" >TITULO: {{article.title}} </h1>
+    
+    <nav class="tag-group" >
+        <p style="margin-top: 2px; margin-bottom: 1px;" ><b>Tags relacionados con el post: </b></p>    
+        <a 
+        *ngFor="let tag of article.tagList"
+        href="#"
+        (click)="loadArticlesByTag(tag)" 
+        class="my-button"
+        >
+            {{tag}}
+        </a>
+    </nav>
+    <h2><b>DESCRIPCION:</b> {{article.description}}</h2>
+    <h3><b>FECHA CREACION:</b> {{article.createdAt}}</h3>
+    <p><b>CUERPO:</b> {{article.body}}</p>
+</div>

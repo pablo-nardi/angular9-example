@@ -15,7 +15,7 @@ export class ArticlesComponent implements OnInit {
   constructor(private service: ArticlesService) { }
 
   ngOnInit(): void {
-
+    this.loadTags();
   }
   loadArticles() {
     this.service.getArticles().subscribe(response => {
@@ -27,10 +27,11 @@ export class ArticlesComponent implements OnInit {
   loadTags() {
     this.service.getTags().subscribe(response =>{
       this.tags = response.tags;
-      //console.log(this.tags);
       this.tags.forEach(element => {
         console.log(element);
-
+/**var cars = cars.filter(function(car) {
+    return car.brand !== 'Seat'; 
+}); */
       });
     });
   }
@@ -40,6 +41,6 @@ export class ArticlesComponent implements OnInit {
      this.artitags = response.articles;
      this.articles = response.articles
      console.log(this.artitags);
-    });
+    }); 
   }
 }
