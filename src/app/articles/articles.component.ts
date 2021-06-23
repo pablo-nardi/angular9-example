@@ -12,6 +12,7 @@ export class ArticlesComponent implements OnInit {
   articles:any = []
   artitags:any = [] //ARTICULOES PERTENECIENTES A UN TAG
   tags: any = [];
+  comments: any [];
   constructor(private service: ArticlesService) { }
 
   ngOnInit(): void {
@@ -43,7 +44,15 @@ export class ArticlesComponent implements OnInit {
      console.log(this.artitags);
     }); 
   }
+  
   addComment(slug:string,comment:any){
-    console.log(`SLUG: ${slug} Comment: ${comment.value}`);
+    this.service.addComment(slug,comment.value); 
   }
+  getComments(slug:string){
+    this.service.getcomments(slug,(response)=>{
+      this.comments = response.comments;
+    });
+  }
+    
+  
 }

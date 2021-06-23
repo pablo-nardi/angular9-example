@@ -18,7 +18,27 @@ export class ArticlesService {
     return this.http.get<any>(url);
   }
   getArticlesByTag(tag:string){
-    const url = `${this.baseUrl}articles?tag=${tag}`;
+    const url = `${this.baseUrl}articles?tag=${tag}&limit=5`;
     return this.http.get<any>(url);
+  }
+  getcomments(slug:string,callback){
+    const url = `${this.baseUrl}articles/${slug}/comments`;
+    this.http.get<any>(url).subscribe(callback);
+  }
+  addComment(slug:string,comment:string){
+    console.log(`SLUG: ${slug} Comment: ${comment}`);
+    const url = `${this.baseUrl}articles/${slug}/comments`;
+    const token = this.authenticate(({user:{token}})=>{
+      const headers = { Authorization: 'Token ' + token }
+      this.http.post<any>(url,{comment:{body:comment}},{headers}).subscribe((callback=>{
+        console.log(callback);
+      }));
+    });
+  } 
+  authenticate(user){
+    const url = `${this.baseUrl}/users/login`;
+    const email = 'pnardi@pnardi.com';
+    const pswd = 'pablonardi';
+    this.http.post<any>(url,{user:{email:email,password:pswd}}).subscribe(user);
   }
 }

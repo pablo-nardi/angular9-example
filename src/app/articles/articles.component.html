@@ -14,7 +14,7 @@
 <div *ngFor="let article of articles"
     class="articles"
 >
-    <h1 class="title" >TITULO: {{article.title}} </h1>
+    <h1 class="title" >{{article.title}} </h1>
     
     <nav class="tag-group" >
         <p style="margin-top: 2px; margin-bottom: 1px;" ><b>Tags relacionados con el post: </b></p>    
@@ -27,11 +27,18 @@
             {{tag}}
         </a>
     </nav>
-    <h2><b>DESCRIPCION:</b> {{article.description}}</h2>
-    <h3><b>FECHA CREACION:</b> {{article.createdAt}}</h3>
-    <p><b>CUERPO:</b> {{article.body}}</p>
-    <textarea name="textArea" id="textArea" cols="30" rows="10" #comment >
+    <h2><b>{{article.description}}</b></h2>
+    <h3><b>Fecha creacion:</b> {{article.createdAt}}</h3>
+    <p><b></b> {{article.body}}</p>
+    <textarea name="textArea" id="textArea" cols="30" rows="10" class="textAreaComment" #comment >
 
     </textarea><br>
-    <button (click)="addComment(article.slug,comment)" >Agregar Comentario</button>
+    <button (click)="addComment(article.slug,comment)" class="boton" >Agregar Comentario</button>
+    <h3>Comentarios del Articulo</h3>
+    <button (click)="getComments(article.slug)" class="boton">Get comments</button>
+    <ul>
+        <li *ngFor="let com of comments" >
+            {{com.body}}
+        </li>
+    </ul>
 </div>
