@@ -30,4 +30,8 @@
     <h2><b>DESCRIPCION:</b> {{article.description}}</h2>
     <h3><b>FECHA CREACION:</b> {{article.createdAt}}</h3>
     <p><b>CUERPO:</b> {{article.body}}</p>
+    <textarea name="textArea" id="textArea" cols="30" rows="10" #comment >
+
+    </textarea><br>
+    <button (click)="addComment(article.slug,comment)" >Agregar Comentario</button>
 </div>

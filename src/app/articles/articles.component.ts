@@ -43,4 +43,7 @@ export class ArticlesComponent implements OnInit {
      console.log(this.artitags);
     }); 
   }
+  addComment(slug:string,comment:any){
+    console.log(`SLUG: ${slug} Comment: ${comment.value}`);
+  }
 }
