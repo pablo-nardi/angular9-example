@@ -1,34 +1,62 @@
+import { OnInit } from '@angular/core';
 import { Injectable } from '@angular/core';
 import {Usuario} from './model/usuario';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DatosService {
+export class DatosService implements OnInit{
 
   constructor() { }
   user: Usuario;
-  users: Usuario[] = [{
-    email:'pnardi@mail.com',
-    password:'pablo',
-    nombre:'Pablo'
-  },
-  {
-    email:'jesus@mail.com',
-    password:'jesus',
-    nombre:'Jesus'
-  },
-  {
-    email:'damian@mail.com',
-    password:'damian',
-    nombre:'Damian'
-  }];
+
+  ngOnInit(): void {
+    this.carga();
+ 
+  }  
+
+  user1 = new Usuario(
+    'pnardi@mail.com',
+    'pablo',
+    'Pablo'
+  );
+  user2 = new Usuario(
+    'jesus@mail.com',
+    'jesus',
+    'jesus'
+  );
+
+  users: Usuario[] = [];
+
+  carga(){
+    this.users.push(this.user1);
+    this.users.push(this.user2);
+    
+  }
 
   getAll(){
     return this.users;
   }
   validate(mail:string, pass:string){
     let result = false;
-    
+    for (let i = 0; i < this.users.length; i++) {
+      if(this.users[i].email === mail){
+        if(this.users[i].password === pass){
+          result = true;
+          break;
+        }
+      }
+      
+    }
+    return result;
+  }
+  addUser(name:string, mail:string, pass:string){
+    this.user = new Usuario(mail, name, pass);
+    console.log(`Usuario a guardad ${this.user}`)
+    this.users.push(this.user);
+    console.log(`Array despues de guardar al nuevo usuario ${this.users}`);
+  }
+  mostrarArray(){
+    console.log(this.users);
   }
 }

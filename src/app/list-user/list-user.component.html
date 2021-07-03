@@ -2,5 +2,10 @@
 <h3>volver a login</h3>
 <button (click)="goBack()" >Volver al Login</button>
 <ul>
-    <li *ngFor="let user of array" >NOMBRE: {{user.nombre}}, MAIL: {{user.email}}</li>
+    <li *ngFor="let user of array" 
+    >NOMBRE: {{user.nombre}}, 
+     MAIL: {{user.email}}
+    <button (click)="edit(user)" >Editar</button>
+    <button>Eliminar</button>   
+    </li>
 </ul>

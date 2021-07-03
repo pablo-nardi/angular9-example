@@ -16,10 +16,16 @@ export class ListUserComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
     this.array = this.service.getAll();
   }
   goBack(){
     this.router.navigate(['login']);
+  }
+  edit(user){
+    console.log(`Usuario a editar ${user}`);
+    this.router.navigate([`form/${user.email}`])
+
   }
 
 }

@@ -8,12 +8,21 @@ export class UsuariosService {
 
   constructor(private datos: DatosService) { }
 
+  carga(){
+    this.datos.carga();
+  }
+
   getAll(){
     return this.datos.getAll();
   }
 
   validate(mail:string, pass:string){
-    this.datos.validate(mail,pass);
+    return this.datos.validate(mail,pass);
   }
-
+  addUser(name:string, mail:string, pass:string){
+    this.datos.addUser(name,mail,pass);
+  }
+  mostrarArray(){
+    this.datos.mostrarArray();
+  }
 }
