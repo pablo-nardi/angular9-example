@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "ng-peti"
+    }
+  },
+  "defaultProject": "ng-peti",
+  "cli": {
+    "analytics": "6d8ea640-9885-4ab1-b3f1-0baf34eb806a"
+  }
 }

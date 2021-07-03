@@ -1,0 +1,6 @@
+<h2>Lista de Usuarios</h2>
+<h3>volver a login</h3>
+<button (click)="goBack()" >Volver al Login</button>
+<ul>
+    <li *ngFor="let user of array" >NOMBRE: {{user.nombre}}, MAIL: {{user.email}}</li>
+</ul>
