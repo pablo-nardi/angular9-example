@@ -9,14 +9,10 @@ import {UsuariosService} from '../usuarios.service'
 })
 export class AddUserComponent implements OnInit {
 
-  dato = 'nada';
   constructor(private usuario:UsuariosService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.dato = this.route.snapshot.params.userMail;
   }
-
-
   addUser(name, mail, pass){
     this.usuario.addUser(name.value,mail.value,pass.value);
   }

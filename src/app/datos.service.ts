@@ -18,7 +18,7 @@ export class DatosService implements OnInit{
   user1 = new Usuario(
     'pnardi@mail.com',
     'pablo',
-    'Pablo'
+    'pablo'
   );
   user2 = new Usuario(
     'jesus@mail.com',
@@ -37,6 +37,15 @@ export class DatosService implements OnInit{
   getAll(){
     return this.users;
   }
+  addUser(name:string, mail:string, pass:string){
+    this.user = new Usuario(mail, name, pass);
+    console.log(`Usuario a guardad ${this.user}`)
+    this.users.push(this.user);
+    console.log(`Array despues de guardar al nuevo usuario ${this.users}`);
+  }
+  mostrarArray(){
+    console.log(this.users);
+  }
   validate(mail:string, pass:string){
     let result = false;
     for (let i = 0; i < this.users.length; i++) {
@@ -50,13 +59,16 @@ export class DatosService implements OnInit{
     }
     return result;
   }
-  addUser(name:string, mail:string, pass:string){
-    this.user = new Usuario(mail, name, pass);
-    console.log(`Usuario a guardad ${this.user}`)
-    this.users.push(this.user);
-    console.log(`Array despues de guardar al nuevo usuario ${this.users}`);
-  }
-  mostrarArray(){
-    console.log(this.users);
+  searchUser(mail:string){
+    console.log(`Usuario a buscar ${mail}`);
+    for (let i = 0; i < this.users.length; i++) {
+      if(this.users[i].email === mail){
+          this.user = this.users[i];
+          //console.log(this.user);
+          break;
+      }
+      
+    }
+    return this.user;
   }
 }

@@ -25,4 +25,7 @@ export class UsuariosService {
   mostrarArray(){
     this.datos.mostrarArray();
   }
+  searchUser(mail:string){
+    return this.datos.searchUser(mail);
+  }
 }
