@@ -1,9 +1,21 @@
 <h1>Login de Usuario</h1>
-
-<label for="mail">Ingrese Email</label>
-<input type="text" id="mail" name="mail" #mail>
-<br>
-<label for="password">Ingrese Contraseña</label>
-<input type="password" id="password" name="password" #pass>
-<br>
-<button (click)="send(mail,pass)" >Enviar</button>
+<div class="form-group" >
+    <div class="col-sm-6" >
+        <label for="mail" class="col-sm-6" >Ingrese Email</label>
+        <div class="col-sm-6" >
+            <input type="text" id="mail" class="form-control" name="mail" #mail>
+        </div>
+    </div>
+    <div class="col-sm-6" >
+    <label for="password" class="col-sm-6" >Ingrese Contraseña</label>
+        <div class="col-sm-6" >
+            <input type="password" id="password" class="form-control" name="password" #pass>
+        </div>    
+    </div>
+    <br>
+    <button 
+    (click)="send(mail,pass)"
+    type="button" 
+    class="btn btn-primary"
+    >Enviar</button>
+</div>

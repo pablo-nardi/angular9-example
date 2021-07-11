@@ -1,11 +1,27 @@
 <h2>Lista de Usuarios</h2>
 <h3>volver a login</h3>
-<button (click)="goBack()" >Volver al Login</button>
+<button 
+(click)="goBack()" 
+type="button" 
+class="btn btn-primary button"
+>Volver al Login</button>
 <ul>
     <li *ngFor="let user of array" 
-    >NOMBRE: {{user.nombre}}, 
-     MAIL: {{user.email}}
-    <button (click)="edit(user)" >Editar</button>
-    <button>Eliminar</button>   
+    ><b>NOMBRE:</b> {{user.nombre}}, <b>MAIL:</b> {{user.email}}
+     <button 
+     (click)="read(user)" 
+     type="button" 
+     class="btn btn-secondary button" 
+     >Consultar</button>
+    <button 
+    (click)="edit(user)" 
+    type="button" 
+    class="btn btn-info button" 
+    >Editar</button>
+    <button 
+    (click)="delete(user)"  
+    type="button" 
+    class="btn btn-danger button"
+    >Eliminar</button>   
     </li>
 </ul>

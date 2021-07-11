@@ -11,7 +11,7 @@ import { LoginUserComponent } from './login-user/login-user.component';
 const routes: Routes = [
   {path: 'login', component: LoginUserComponent},
   {path: 'list', component: ListUserComponent},
-  {path: 'form/:userMail', component: EditUserComponent},
+  {path: 'form/:mode/:userMail', component: EditUserComponent},
   {path: 'form', component: AddUserComponent},
   {path: '**', component: Component1Component}
 ];

@@ -16,14 +16,29 @@ export class ListUserComponent implements OnInit {
   }
 
   ngOnInit(): void {  
-    this.array = this.service.getAll();
+    if(this.service.validate()){
+      this.array = this.service.getAll();
+    }else{
+      console.log('Acceso denegado, se lo reenvia al login');
+      this.router.navigate(['login']);
+    }
+    
   }
   goBack(){
     this.router.navigate(['login']);
   }
+  read(user){
+    this.router.navigate([`form/read/${user.email}`]);
+  }
   edit(user){
     //console.log('Usuario a editar: ',user);
-    this.router.navigate([`form/${user.email}`])
+    this.router.navigate([`form/edit/${user.email}`]);
+  }
+  delete(user){
+    
+    console.log('Llamando a metodo para eliminar user');
+    this.service.deleteUser(user.email);
+    console.log('Llamada finalizada');
   }
 
 

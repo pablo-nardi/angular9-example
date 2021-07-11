@@ -6,6 +6,7 @@ import {DatosService} from './datos.service';
 })
 export class UsuariosService {
 
+  
   constructor(private datos: DatosService) { }
 
   carga(){
@@ -16,8 +17,11 @@ export class UsuariosService {
     return this.datos.getAll();
   }
 
-  validate(mail:string, pass:string){
-    return this.datos.validate(mail,pass);
+  login(mail:string, pass:string){
+    return this.datos.login(mail,pass);
+  }
+  validate(){
+    return this.datos.validate();
   }
   addUser(name:string, mail:string, pass:string){
     this.datos.addUser(name,mail,pass);
@@ -27,5 +31,12 @@ export class UsuariosService {
   }
   searchUser(mail:string){
     return this.datos.searchUser(mail);
+  }
+  updateUser(name, mail, pass){
+    this.datos.updateUser(name, mail, pass);
+  }
+  deleteUser(mail){
+    console.log('Usuario service');
+    this.datos.deleteUser(mail);
   }
 }

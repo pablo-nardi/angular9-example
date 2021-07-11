@@ -16,7 +16,7 @@ export class LoginUserComponent implements OnInit {
 
   send(mail:any,pass:any){
     console.log('valores del form '+mail.value+' '+pass.value);
-    if(this.usuario.validate(mail.value, pass.value)){
+    if(this.usuario.login(mail.value, pass.value)){
       this.router.navigate(['list']);
     }else{
       console.log('error al autenticar al usuario');
