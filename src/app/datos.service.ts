@@ -114,9 +114,13 @@ export class DatosService implements OnInit{
     if(this.validate()){
       console.log('INDICE DE USUARIO')
       console.log('mail a validar',mail)
-      let pos = this.users.findIndex(user => user.email == mail)
-      this.users.splice(pos,1);
-      console.log('ARRAY DESPUES DE ELIMINAR ',this.users);
+      if( mail != this.actualUser.email){
+        let pos = this.users.findIndex(user => user.email == mail)
+        this.users.splice(pos,1);
+        console.log('ARRAY DESPUES DE ELIMINAR ',this.users);
+      }else{
+        console.log('El usuario actual no puede borrarse a si mismo')
+      }
     }else{
       console.log('ERROR al intentar eliminar el user')
     }
