@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LocalStorageService } from './local-storage.service';
+import { TodoItem } from './model/todo-item';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,18 @@ export class TodoService {
     task.id = id;
     this.list.push(task);
     this.lastItemId += 10;
+  }
+
+  editTask(task: TodoItem){
+    for (let i = 0; i < this.list.length; i++) {
+      if(this.list[i].id === task.id){
+        console.log('se encontro la tarea')
+        this.list[i].description = task.description;
+        this.list[i].isCompleted = task.isCompleted;
+        break
+      }
+      
+    }
   }
 
   remove(id) {

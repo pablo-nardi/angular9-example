@@ -13,11 +13,14 @@ export class AppComponent {
     lastName: new FormControl('', [Validators.required, StartsWithAValidator]),
   })
     constructor () {
-      this.profileForm.valueChanges.subscribe(value => console.log(value));
+      this.profileForm.valueChanges.subscribe(value => 
+        console.log('Mostando cambios en el Form ',value));
     }
 
   onSubmit() {
     console.log(this.profileForm.value);
+    console.log(this.profileForm.value.firstName);
+    console.log(this.profileForm.value.lastName);
   }
   initialize() {
     this.profileForm.reset()

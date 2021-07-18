@@ -1,0 +1,17 @@
+<div class="form-pablo">
+    <h2>Form de Pablo</h2>
+    <form [formGroup]="form">
+        <label for="">Add task</label>
+        <input type="text"
+        class="add-todo" 
+        formControlName="firstInput" >
+        <button 
+        class="btn btn-primary" 
+        (click)="add()" 
+        >{{editFlag ? 'Edit' : 'Add'}}
+        </button>
+    </form>
+    <div>
+        {{valor}}
+    </div>
+</div>

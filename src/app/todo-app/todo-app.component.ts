@@ -9,7 +9,7 @@ import { TodoService } from '../todo.service';
   styleUrls: ['./todo-app.component.scss'],
 })
 export class TodoAppComponent  {
-
+  item: TodoItem;
   constructor(
     private service: TodoService
   ) {}
@@ -25,5 +25,9 @@ export class TodoAppComponent  {
   }
   onTodoItemCreated(task) {
     this.service.add(task)
+  }
+  onTodoItemEdited(item: TodoItem){
+    console.log(item.description);
+    this.item = item;
   }
 }
