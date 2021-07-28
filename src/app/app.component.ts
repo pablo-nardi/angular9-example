@@ -10,7 +10,7 @@ export class AppComponent {
   title = 'Todo';
   profileForm = new FormGroup({
     firstName: new FormControl('', [Validators.required, Validators.maxLength(10)]),
-    lastName: new FormControl('', [Validators.required, StartsWithAValidator]),
+    lastName: new FormControl('', [Validators.required, StartsWithAValidator])
   })
     constructor () {
       this.profileForm.valueChanges.subscribe(value => 

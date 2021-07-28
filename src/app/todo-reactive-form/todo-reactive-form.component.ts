@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {FormGroup, FormControl} from '@angular/forms';
+import {FormGroup, FormControl, Validators, AbstractControl} from '@angular/forms';
 import {TodoItem} from '../model/todo-item'
 import {TodoService} from '../todo.service';
 
@@ -15,7 +15,8 @@ export class TodoReactiveFormComponent implements OnInit {
   editFlag = false;
   valor:any = 'hola';
   form = new FormGroup({
-    firstInput: new FormControl()
+    firstInput: new FormControl('',Validators.required),
+    urlInput: new FormControl('',validaUrl)
   })
 
   constructor(private service: TodoService) { 
@@ -49,6 +50,7 @@ export class TodoReactiveFormComponent implements OnInit {
     }else{
       console.log('Llamando a service.add task');
       let item = new TodoItem();
+      console.log('variable form', this.form.value);
       item.description = this.form.value.firstInput;
       item.isCompleted = false;
       this.service.add(item)
@@ -56,4 +58,15 @@ export class TodoReactiveFormComponent implements OnInit {
     }
     
   }
+}
+
+export function validaUrl(control: AbstractControl){
+  //if(control.value != ""){
+    console.log('Valor del campo de url: ',control.value )
+    if(!control.value.startsWith('https')){
+      return { urlNoCorrecta: true };
+    }
+    //return null;
+  //}
+  
 }
