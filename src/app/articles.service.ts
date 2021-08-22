@@ -1,14 +1,23 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import {Solicitud} from './model/solicitud';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArticlesService {
 
+  readonly local = 'http://localhost:3000/';
   readonly baseUrl = 'https://conduit.productionready.io/api/';
 
   constructor(private http: HttpClient) { }
+
+
+  getSolicitudes(){
+    const url = this.local + 'solicitudes';
+    return this.http.get<any>(url);
+  }
+
   getArticles() {
     const url = this.baseUrl + 'articles';
     return this.http.get<any>(url);
