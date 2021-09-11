@@ -1,5 +1,11 @@
+<nav
+*ngIf="tags.length === 0"
+class="tag-wait"
+>
+<p>CARGANDO TAGS</p>
+</nav>
 <nav class="tag-group" >
-
+    
     <a 
     *ngFor="let tag of tags"
     href="#"
@@ -9,8 +15,19 @@
         {{tag}}
     </a>
 </nav>
-
-
+<!--div *ngIf="condition">Content to render when condition is true.</div-->
+<div 
+    *ngIf="selectedTag != null"
+    class="tag-group">
+    <h1>Searching articles with this tag: </h1>
+    <a 
+    href="#"
+    (click)="loadArticlesByTag(selectedTag)" 
+    class="my-button"
+    >
+        {{selectedTag}}
+    </a>
+</div>
 <div *ngFor="let article of articles"
     class="articles"
 >
@@ -30,10 +47,11 @@
     <h2><b>{{article.description}}</b></h2>
     <h3><b>Fecha creacion:</b> {{article.createdAt}}</h3>
     <p><b></b> {{article.body}}</p>
-    <textarea name="textArea" id="textArea" cols="30" rows="10" class="textAreaComment" #comment >
+    <textarea name="textArea" id="textArea" cols="20" rows="5" class="textAreaComment" #comment >
 
     </textarea><br>
-    <button (click)="addComment(article.slug,comment)" class="boton" >Agregar Comentario</button>
+    
+    <button (click)="addComment(article.slug,comment)" class="boton" >Add comments</button>
     <h3>Comentarios del Articulo</h3>
     <button (click)="getComments(article.slug)" class="boton">Get comments</button>
     <ul>

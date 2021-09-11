@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {Solicitud} from './model/solicitud';
+import {Categoria} from './model/categoria';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,38 @@ export class ArticlesService {
     const url = this.local + 'solicitudes';
     return this.http.get<any>(url);
   }
+
+
+
+ // CATEGORIAS //
+  getCategorias(){
+    const url = this.local + 'categorias';
+    return this.http.get<any>(url);
+  }
+  getOne(idCategoria: number){
+    const url = `${this.local}categorias/${idCategoria}`; 
+    return this.http.get<any>(url);
+  }
+  addOne(desc : string){
+    const url = this.local + 'categorias';
+    return this.http.post<any>(url,{descripcion: desc});
+  }
+  deteleCategoria(idCategoria: number){
+    const url = `${this.local}categorias/${idCategoria}`;
+    return this.http.delete<any>(url);
+  }
+  updateCategoria(categoria: Categoria, idCategoria: number){
+    const url = `${this.local}categorias/${idCategoria}`;
+    return this.http.put<any>(url,categoria);
+  }
+
+ // PRODUCTOS //
+  getProductos(){
+    const url = this.local + 'productos';
+    return this.http.get<any>(url);
+  }
+
+/////////////////////////////// 
 
   getArticles() {
     const url = this.baseUrl + 'articles';

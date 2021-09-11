@@ -10,7 +10,8 @@ import { ArticlesService } from '../articles.service';
 export class ArticlesComponent implements OnInit {
 
   articles:any = []
-  artitags:any = [] //ARTICULOES PERTENECIENTES A UN TAG
+  artitags:any = [] //ARTICULOS PERTENECIENTES A UN TAG
+  selectedTag: string;
   tags: any = [];
   comments: any [];
   constructor(private service: ArticlesService) { }
@@ -38,6 +39,7 @@ export class ArticlesComponent implements OnInit {
   }
   loadArticlesByTag(tag:string){
     console.log(`tocaste el tag --> ${tag}`);
+    this.selectedTag = tag;
     this.service.getArticlesByTag(tag).subscribe(response =>{
      this.artitags = response.articles;
      this.articles = response.articles
@@ -46,9 +48,12 @@ export class ArticlesComponent implements OnInit {
   }
   
   addComment(slug:string,comment:any){
+    console.log(`Slug del addComment: ${slug}`);
     this.service.addComment(slug,comment.value); 
+    this.getComments(slug);
   }
   getComments(slug:string){
+    console.log(`Slug del getComments: ${slug}`);
     this.service.getcomments(slug,(response)=>{
       this.comments = response.comments;
     });

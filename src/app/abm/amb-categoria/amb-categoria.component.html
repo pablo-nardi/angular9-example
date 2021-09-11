@@ -1,0 +1,19 @@
+<div class="container-sm position-absolute top-50 start-50 translate-middle border border-dark border-2">
+    <h3>Ingrese descripcion de la Categoria</h3>
+    <div>
+        <form [formGroup]="abmForm" (ngSubmit)="onSubmit()">
+                <div class="mb-3">    
+                    <label for="descripcion" class="form-label"> Descripcion: </label>
+                        
+                    <input type="text" class="form-control border border-dark" formControlName="descripcion" name="descripcion" id="descripcion"
+                    [value]="categoria != null ? categoria.descripcion : '' "
+                    [readonly]="mode === 'eliminar' ? 'readonly': '' "
+                    >
+                </div>
+           
+                <button type="submit" class="btn btn-primary" style="margin-left: 25px;">{{submit}}</button>
+                <button type="button" class="btn btn-primary" style="margin-left: 15px;" (click)="initialize()" >Reset</button>
+           
+        </form>
+    </div>
+</div>
